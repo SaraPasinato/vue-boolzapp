@@ -40,12 +40,12 @@ body{
     align-items: center;
 }
 
-
+#contact-header .contact-icons,
 #user-header .user-icons{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
-
+#contact-header .contact-icons i,
 #user-header .user-icons i{
     color:#b1b1b1;
 }
@@ -100,7 +100,7 @@ body{
 /**!utils **/
 .img-avatar{
  
-    width:18%;
+    width:60px;
     border-radius: 50%;
     cursor: pointer;
 }
