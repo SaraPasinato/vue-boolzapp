@@ -18,5 +18,19 @@ body{
     background-color: #fff;
     height:92%;
     width:80%;
-   
+    display: flex;
+}
+
+/* section left side */
+#l-side{
+    height: 100%;
+    width: 40%;
+    background-color: purple;
+}
+
+/* section right side */
+#r-side{
+    height: 100%;
+    width: 60%;
+    background-color: gold;
 }
