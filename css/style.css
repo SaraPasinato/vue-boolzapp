@@ -39,6 +39,12 @@ body{
     height: 100px;
     background-color: #34b7f1;
 }
+
+#user-contacts{
+    width: 100%;
+    height: calc(100% - 180px);
+    background-color: #fff;
+}
 /* section right side */
 #r-side{
     height: 100%;
