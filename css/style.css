@@ -113,7 +113,12 @@ body{
 #chat{
     width: 100%;
     height: calc(100% - 160px);
-    background-color: #fff;
+
+    background: url('../assets/img/mine.jpg');
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: contain;
+    overflow-y: scroll;
 }
 /*? section msg control*/
 #msg-control{
