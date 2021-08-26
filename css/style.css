@@ -126,11 +126,17 @@ body{
 }
 
 #chat .message{
-    width: 350px;
-    padding: 10px 30px 20px 10px;
+    width: 300px;
+    padding: 15px 30px 5px 15px;
     margin-bottom: 10px;
     border-radius: 10px;
 }
+
+#chat .message .time-stamp{
+    padding: 0;
+    margin-bottom: 0px;
+}
+
 /*? section msg control*/
 #msg-control{
     width: 100%;
