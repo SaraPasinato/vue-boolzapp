@@ -113,12 +113,23 @@ body{
 #chat{
     width: 100%;
     height: calc(100% - 160px);
+    padding:50px 70px;
 
     background: url('../assets/img/mine.jpg');
     background-position: center;
     background-repeat: repeat-y;
     background-size: contain;
     overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#chat .message{
+    width: 350px;
+    padding: 10px 30px 20px 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
 }
 /*? section msg control*/
 #msg-control{
@@ -150,3 +161,12 @@ body{
     cursor: pointer;
 }
 
+.message-sent {
+    align-self: flex-end;
+    background-color: #D5F9BA;
+}
+
+.message-received {
+    align-self: flex-start;
+    background-color: #fff;
+}
