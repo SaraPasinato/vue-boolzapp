@@ -27,7 +27,6 @@ body{
     height: 100%;
     width: 40%;
 
-    border: 1px solid blue;
 
 }
  /***** user header ********/
@@ -61,7 +60,7 @@ body{
     background-color: #8edafc;
 
     display: flex;
-   
+
     align-items: center;
 }
 
@@ -71,7 +70,7 @@ body{
     margin-right: 10px;
     line-height: 60px;
     text-align: center;
-   
+
     color: #8edafc;
     background-color: #fff;
     border-radius: 50%;
@@ -102,7 +101,7 @@ body{
 }
 #user-contacts .contact:hover{
     background-color: #ece5dd;
-    
+
 }
 /* ?section right side */
 #r-side{
@@ -116,9 +115,9 @@ body{
     padding:50px 70px;
 
     background: url('../assets/img/mine.jpg');
-    background-position: center;
+    background-position:top;
     background-repeat: repeat-y;
-    background-size: contain;
+    background-size:contain;
     overflow-y: scroll;
 
     display: flex;
