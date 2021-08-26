@@ -51,14 +51,30 @@ body{
 }
 
 
-
 /****** user control section *****/
 #user-control{
     width: 100%;
     height: 100px;
-    background-color: #34b7f1;
+    background-color: #8edafc;
+
+    display: flex;
+   
+    align-items: center;
 }
 
+#user-control .bg-bell{
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+    line-height: 60px;
+    text-align: center;
+   
+    color: #8edafc;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+/****** user control section *****/
 #user-contacts{
     width: 100%;
     height: calc(100% - 180px);
