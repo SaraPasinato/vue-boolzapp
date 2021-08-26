@@ -45,9 +45,10 @@ body{
     display: flex;
     justify-content: space-around;
 }
+#msg-control i,
 #contact-header .contact-icons i,
 #user-header .user-icons i{
-    color:#b1b1b1;
+    color:#808080;
 }
 
 
@@ -89,15 +90,22 @@ body{
 
 #chat{
     width: 100%;
-    height: calc(100% - 180px);
+    height: calc(100% - 160px);
     background-color: #fff;
 }
+/*? section msg control*/
 #msg-control{
     width: 100%;
-    height: 100px;
+    height: 80px;
     background-color: #ece5dd;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
+
+/*? section contact header*/
 #contact-header .contact-info{
     display: flex;
     justify-content: start;
