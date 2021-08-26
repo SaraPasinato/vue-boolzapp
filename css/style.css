@@ -1,0 +1,22 @@
+*{
+    list-style: none;
+    outline: none;
+    font-family: 'Lato', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #128c7e 0%,#128c7e 15%, #ece5dd 15%, #ece5dd 100%);
+    background-repeat: no-repeat;
+}
+
+#app {
+    background-color: #fff;
+    min-height:90%;
+    width:90%;
+   
+}
