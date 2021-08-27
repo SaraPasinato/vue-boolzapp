@@ -16,7 +16,9 @@
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
+    <!-- user.js -->
+    <script type="text/javascript" src="./js/users.js"></script>
+     <link rel="stylesheet" href="./css/style.css">
     <title>BoolzApp</title>
 </head>
 
@@ -28,8 +30,8 @@
             <header id="user-header">
                 <!-- user photo + user name-->
                 <div class="col-8 user-info p-2">
-                    <img class="img-avatar " src="./assets/img/avatar_io.jpg" alt="Avatar Utente">
-                    <span class="lead fw-normal ms-2">Nome Utente</span>
+                    <img class="img-avatar " :src="'./assets/img/avatar'+user.avatar + '.jpg'" alt="Avatar Utente">
+                    <span class="lead fw-normal ms-2">{{user.name}}</span>
                 </div>
                 <!-- user links -->
                 <div class="col-4 user-icons p-1">
