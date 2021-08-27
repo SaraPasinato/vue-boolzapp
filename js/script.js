@@ -20,6 +20,7 @@ var app = new Vue({
       currentContact:0,
     },
     methods:{
+      //metodo per settare poi il contatto al click sul profilo (user-contact)
       setCurrentContact(position){
         this.currentContact=position;
         return this.currentContact;
