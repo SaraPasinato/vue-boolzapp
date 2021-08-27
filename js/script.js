@@ -26,7 +26,7 @@ var app = new Vue({
     seconds: 1000,
     //input search 
     //? devo inserire vuoto ('')
-    search:'',
+    search: '',
   },
   methods: {
     //metodo per settare poi il contatto al click sul profilo (user-contact)
@@ -35,54 +35,61 @@ var app = new Vue({
       return this.currentContact;
     },
 
-    getRandomNumber(max){
-      return Math.floor(Math.random() * (max ) );
+    getRandomNumber(max) {
+      return Math.floor(Math.random() * (max));
     },
     //crea un nuovo messaggio
     newMessage() {
-      //creo un oggetto messaggio
-      //TODO:controllo stringa vuota 
-      const msg = {
-        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
-        message: this.currentText,
-        status: 'sent',
-      };
-      //inserisco il messaggio in coda ai messaggi del current contact
-      this.data.contacts[this.currentContact].messages.push(msg);
-      //pulisco il currentText
-      this.currentText = '';
-
-      setTimeout(() => {
-        //creo array di risoposte
-        const strResponses=['Ciao👋🏻','Ok,arrivo subito','Yep','Lol🤣','Scusa,👀 ..ora non posso','sono in riunione','Nope'];
-        const len=strResponses.length -1;
-        //creo un messaggio di risposta
-        let msgAuto = {
+     
+      /////TODO:controllo stringa vuota 
+      if (!isNaN(this.currentText) && this.currentText.trim()!= '') {
+         //creo un oggetto messaggio
+        const msg = {
           date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
-          message: '',
-          status: 'received',
+          message: this.currentText,
+          status: 'sent',
         };
+        //inserisco il messaggio in coda ai messaggi del current contact
+        this.data.contacts[this.currentContact].messages.push(msg);
+        //pulisco il currentText
+        this.currentText = '';
 
-        // setto messaggio casuale
-        msgAuto.message=strResponses[this.getRandomNumber(len)];
-        //inserisco il messggio automatico
-        this.data.contacts[this.currentContact].messages.push(msgAuto);
+        setTimeout(() => {
+          //creo array di risoposte
+          const strResponses = ['Ciao👋🏻', 'Ok,arrivo subito', 'Yep', 'Lol🤣', 'Scusa,👀 ..ora non posso', 'sono in riunione', 'Nope'];
+          const len = strResponses.length - 1;
+          //creo un messaggio di risposta
+          let msgAuto = {
+            date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+            message: '',
+            status: 'received',
+          };
 
-      }, this.seconds);
+          // setto messaggio casuale
+          msgAuto.message = strResponses[this.getRandomNumber(len)];
+          //inserisco il messggio automatico
+          this.data.contacts[this.currentContact].messages.push(msgAuto);
+
+        }, this.seconds);
+
+      } else {
+        //altrimenti scrivo in console e non inserisco niente
+        console.log('hai inserito uno spazio');
+      }
     },
-   
+
   },
   //! methods vs. computed
   // computed: serve a modificare la vista di dati già esistenti.
   // methods: modificare direttamente i dati
   // cit. vus.js doc site /computed-properties
-  computed:{
-      //filtro per nome dei contatti
-      filterByNameContact(){
-        return this.data.contacts.filter((contact)=>{
-          return contact.name.toLowerCase().includes(this.search.toLowerCase());
-        }
-        );
+  computed: {
+    //filtro per nome dei contatti
+    filterByNameContact() {
+      return this.data.contacts.filter((contact) => {
+        return contact.name.toLowerCase().includes(this.search.toLowerCase());
       }
+      );
+    }
   }
 })
