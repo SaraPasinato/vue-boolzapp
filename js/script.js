@@ -4,8 +4,8 @@
 //* Click sul contatto mostra la conversazione del contatto cliccato
 //! EXTRA:
 // !Milestone 3:
-// Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra,
-//   come messaggio verde
+//* Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra,
+//*   come messaggio verde
 // Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo
 console.log("HERE",Vue);
 
@@ -22,8 +22,9 @@ var app = new Vue({
       currentContact:0,
       //tiene traccia del testo in input
       currentText:"",   
-      //tiene traccia del momento attuale    
-      currentDate:dayjs().format('DD/MM/YYYY HH:mm:ss'),
+      
+      //secondi di risposta
+      seconds:1000,
     },
     methods:{
       //metodo per settare poi il contatto al click sul profilo (user-contact)
@@ -34,8 +35,8 @@ var app = new Vue({
       //crea un nuovo messaggio
       newMessage(){
         //creo un oggetto messaggio
-        let msg={
-          date:this.currentDate,
+        const msg={
+          date:dayjs().format('DD/MM/YYYY HH:mm:ss'),
           message:this.currentText,
           status:'sent',
         };
@@ -43,6 +44,18 @@ var app = new Vue({
         this.data.contacts[this.currentContact].messages.push(msg);
         //pulisco il currentText
         this.currentText='';
+
+        setTimeout(()=>{
+          //creo un messaggio di risposta
+          const msgAuto={
+            date:dayjs().format('DD/MM/YYYY HH:mm:ss'),
+            message:'ok!',
+            status:'received',
+          } ;
+          //inserisco il messggio automatico
+          this.data.contacts[this.currentContact].messages.push(msgAuto);
+
+        },this.seconds);
       },
     }
   })
