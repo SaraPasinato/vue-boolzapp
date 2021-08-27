@@ -57,9 +57,9 @@
             </section>
             <!-- section  contacts  -->
             <section id="user-contacts">
-                <div class="contact d-flex ">
-                    <img class="img-avatar align-self-center mx-3" src="./assets/img/avatar_1.jpg" alt="">
-                    <span class="lead fs-3">Michele </span>
+                <div class="contact d-flex " v-for="contact in contacts">
+                    <img class="img-avatar align-self-center mx-3" :src="'./assets/img/avatar'+contact.avatar+'.jpg'" alt="">
+                    <span class="lead fs-3">{{contact.name}}</span>
                 </div>
             </section>
         </section>
