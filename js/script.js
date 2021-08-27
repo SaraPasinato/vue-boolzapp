@@ -32,6 +32,10 @@ var app = new Vue({
       this.currentContact = position;
       return this.currentContact;
     },
+
+    getRandomNumber(max){
+      return Math.floor(Math.random() * (max - 1) + 1);
+    },
     //crea un nuovo messaggio
     newMessage() {
       //creo un oggetto messaggio
@@ -46,16 +50,24 @@ var app = new Vue({
       this.currentText = '';
 
       setTimeout(() => {
+        //creo array di risoposte
+        const strResponses=['Ciao','Ok,arrivo subito','Yep','Lol','Scusa ora non posso','sono in riunione','Nope'];
+        const len=strResponses.length -1;
         //creo un messaggio di risposta
-        const msgAuto = {
+        let msgAuto = {
           date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
-          message: 'ok!',
+          message: '',
           status: 'received',
         };
+
+        // setto messaggio casuale
+        msgAuto.message=strResponse[this.getRandomNumber(len)];
         //inserisco il messggio automatico
         this.data.contacts[this.currentContact].messages.push(msgAuto);
 
       }, this.seconds);
     },
+
+   
   }
 })
