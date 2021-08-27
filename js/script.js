@@ -41,6 +41,7 @@ var app = new Vue({
     //crea un nuovo messaggio
     newMessage() {
       //creo un oggetto messaggio
+      //TODO:controllo stringa vuota 
       const msg = {
         date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
         message: this.currentText,
@@ -71,7 +72,7 @@ var app = new Vue({
     },
    
   },
-  //? methods vs. computed
+  //! methods vs. computed
   // computed: serve a modificare la vista di dati già esistenti.
   // methods: modificare direttamente i dati
   // cit. vus.js doc site /computed-properties
