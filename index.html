@@ -16,8 +16,7 @@
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <!-- user.js -->
-    <script type="text/javascript" src="./js/users.js"></script>
+  
      <link rel="stylesheet" href="./css/style.css">
     <title>BoolzApp</title>
 </head>
@@ -30,8 +29,8 @@
             <header id="user-header">
                 <!-- user photo + user name-->
                 <div class="col-8 user-info p-2">
-                    <img class="img-avatar " :src="'./assets/img/avatar'+user.avatar + '.jpg'" alt="Avatar Utente">
-                    <span class="lead fw-normal ms-2">{{user.name}}</span>
+                    <img class="img-avatar " :src="`assets/img/avatar${data.user.avatar}.jpg`" :alt="data.user.name">
+                    <span class="lead fw-normal ms-2">{{data.user.name}}</span>
                 </div>
                 <!-- user links -->
                 <div class="col-4 user-icons p-1">
@@ -57,8 +56,8 @@
             </section>
             <!-- section  contacts  -->
             <section id="user-contacts">
-                <div class="contact d-flex " v-for="contact in contacts">
-                    <img class="img-avatar align-self-center mx-3" :src="'./assets/img/avatar'+contact.avatar+'.jpg'" alt="">
+                <div class="contact d-flex " v-for="(contact,pos) in data.contacts">
+                    <img class="img-avatar align-self-center mx-3" :src="`assets/img/avatar${contact.avatar}.jpg`" :alt="contact.name">
                     <span class="lead fs-3">{{contact.name}}</span>
                 </div>
             </section>
@@ -98,6 +97,8 @@
             </footer>
         </section>
     </div>
+      <!-- user.js -->
+      <script type="text/javascript" src="./js/users.js"></script>
     <script type="text/javascript" src="./js/script.js"></script>
 </body>
 
