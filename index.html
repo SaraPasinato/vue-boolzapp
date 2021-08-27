@@ -18,7 +18,7 @@
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <!-- day-js cdn-->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/dayjs.min.js"></script>
-     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>BoolzApp</title>
 </head>
 
@@ -53,12 +53,15 @@
             <!-- section  search contacts  -->
             <section id="user-search">
                 <a href=""><i class="text-secondary fas fa-search fa-lg"></i></a>
-                <input type="text" class="fw-lighter form-control w-75" placeholder="Cerca o inizia una nuova chat" id="filterChat">
+                <input type="text" class="fw-lighter form-control w-75" placeholder="Cerca o inizia una nuova chat"
+                    id="filterChat">
             </section>
             <!-- section  contacts  -->
             <section id="user-contacts">
-                <div class="contact d-flex " v-for="(contact,pos) in data.contacts" @click="setCurrentContact(pos)" :class="(pos === currentContact ? 'active' : '')" >
-                    <img class="img-avatar align-self-center mx-3" :src="`assets/img/avatar${contact.avatar}.jpg`" :alt="contact.name">
+                <div class="contact d-flex " v-for="(contact,pos) in data.contacts" @click="setCurrentContact(pos)"
+                    :class="(pos === currentContact ? 'active' : '')">
+                    <img class="img-avatar align-self-center mx-3" :src="`assets/img/avatar${contact.avatar}.jpg`"
+                        :alt="contact.name">
                     <span class="lead fs-3">{{contact.name}}</span>
                 </div>
             </section>
@@ -69,12 +72,15 @@
             <header id="contact-header">
                 <!-- contact photo + contact name-->
                 <div class="col-9 contact-info p-2">
-                    <img class="img-fluid img-avatar ms-2" :src="`./assets/img/avatar${data.contacts[currentContact].avatar}.jpg`" :alt="data.contacts[currentContact].name">  
-                     <div class="info-items ms-2 mt-4">
-                         <p><span class="lead fw-normal ">{{data.contacts[currentContact].name}}</span></p>
-                    <!-- TODO: metodo per stampare la data l'ultimo messaggio ricevuto dal contatto-->
-                         <p class="fw-light figure-caption">Ultimo accesso oggi alle <span class="time">{{data.contacts[currentContact].messages[data.contacts[currentContact].messages.length -1].date}}</span></p>
-                     </div>
+                    <img class="img-fluid img-avatar ms-2"
+                        :src="`./assets/img/avatar${data.contacts[currentContact].avatar}.jpg`"
+                        :alt="data.contacts[currentContact].name">
+                    <div class="info-items ms-2 mt-4">
+                        <p><span class="lead fw-normal ">{{data.contacts[currentContact].name}}</span></p>
+                        <p class="fw-light figure-caption">Ultimo accesso oggi alle <span
+                                class="time">{{data.contacts[currentContact].messages[data.contacts[currentContact].messages.length
+                                -1].date}}</span></p>
+                    </div>
                 </div>
                 <!-- user links -->
                 <div class="col-3 contact-icons p-1">
@@ -85,22 +91,25 @@
             </header>
             <!-- section chat-->
             <section id="chat">
-                <div class="message " v-for="(message in data.contacts[currentContact].messages" :class="(message.status=='received') ? 'message-received':'message-sent'">
+                <div class="message " v-for="(message in data.contacts[currentContact].messages"
+                    :class="(message.status=='received') ? 'message-received':'message-sent'">
                     <p class="fw-normal mb-0"><span class="decription-message">{{message.message}}</span></p>
-                    <p class="time-stamp  fw-light figure-caption text-end"> <span class="time">{{message.date}}</span></p>
+                    <p class="time-stamp  fw-light figure-caption text-end"> <span class="time">{{message.date}}</span>
+                    </p>
                 </div>
-          
+
             </section>
             <!-- footer message control -->
             <footer id="msg-control">
                 <a href=""><i class="far fa-smile fa-lg"></i></a>
-                <input type="text" class="fw-light form-control w-75" placeholder="Scrivi un messaggio" v-model="currentText" @keydown.enter="newMessage()">
+                <input type="text" class="fw-light form-control w-75" placeholder="Scrivi un messaggio"
+                    v-model="currentText" @keydown.enter="newMessage()">
                 <a href=""><i class="fas fa-microphone fa-lg"></i></a>
             </footer>
         </section>
     </div>
-      <!-- user.js -->
-      <script type="text/javascript" src="./js/users.js"></script>
+    <!-- user.js -->
+    <script type="text/javascript" src="./js/users.js"></script>
     <script type="text/javascript" src="./js/script.js"></script>
 </body>
 
