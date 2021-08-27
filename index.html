@@ -16,7 +16,8 @@
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-  
+    <!-- day-js cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/dayjs.min.js"></script>
      <link rel="stylesheet" href="./css/style.css">
     <title>BoolzApp</title>
 </head>
@@ -93,7 +94,7 @@
             <!-- footer message control -->
             <footer id="msg-control">
                 <a href=""><i class="far fa-smile fa-lg"></i></a>
-                <input type="text" class="fw-light form-control w-75" placeholder="Scrivi un messaggio" v-model="currentText">
+                <input type="text" class="fw-light form-control w-75" placeholder="Scrivi un messaggio" v-model="currentText" @keydown.enter="newMessage()">
                 <a href=""><i class="fas fa-microphone fa-lg"></i></a>
             </footer>
         </section>

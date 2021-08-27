@@ -20,14 +20,29 @@ var app = new Vue({
       data,
       //tiene traccia della posizione corrente in array contacts
       currentContact:0,
-      currentText:"",      //tiene traccia del testo in input
-
+      //tiene traccia del testo in input
+      currentText:"",   
+      //tiene traccia del momento attuale    
+      currentDate:dayjs().format('DD/MM/YYYY HH:mm:ss'),
     },
     methods:{
       //metodo per settare poi il contatto al click sul profilo (user-contact)
       setCurrentContact(position){
         this.currentContact=position;
         return this.currentContact;
-      }
+      },
+      //crea un nuovo messaggio
+      newMessage(){
+        //creo un oggetto messaggio
+        let msg={
+          date:this.currentDate,
+          message:this.currentText,
+          status:'sent',
+        };
+        //inserisco il messaggio in coda ai messaggi del current contact
+        this.data.contacts[this.currentContact].messages.push(msg);
+        //pulisco il currentText
+        this.currentText='';
+      },
     }
   })
