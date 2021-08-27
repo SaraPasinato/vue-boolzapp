@@ -34,7 +34,7 @@ var app = new Vue({
     },
 
     getRandomNumber(max){
-      return Math.floor(Math.random() * (max - 1) + 1);
+      return Math.floor(Math.random() * (max ) );
     },
     //crea un nuovo messaggio
     newMessage() {
@@ -51,7 +51,7 @@ var app = new Vue({
 
       setTimeout(() => {
         //creo array di risoposte
-        const strResponses=['Ciao','Ok,arrivo subito','Yep','Lol','Scusa ora non posso','sono in riunione','Nope'];
+        const strResponses=['Ciao👋🏻','Ok,arrivo subito','Yep','Lol🤣','Scusa,👀 ..ora non posso','sono in riunione','Nope'];
         const len=strResponses.length -1;
         //creo un messaggio di risposta
         let msgAuto = {
