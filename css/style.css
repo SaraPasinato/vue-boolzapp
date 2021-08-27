@@ -11,13 +11,17 @@ body{
 }
 
 #app {
-    background-color: #fff;
+  
     height:92%;
     width:80%;
 
     display: flex;
     justify-content: start;
     align-items: center;
+
+    background-color: #fff;
+    box-shadow:  3px 3px 50px #808080;
+   
 }
 
 
