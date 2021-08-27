@@ -61,7 +61,7 @@ var app = new Vue({
         };
 
         // setto messaggio casuale
-        msgAuto.message=strResponse[this.getRandomNumber(len)];
+        msgAuto.message=strResponses[this.getRandomNumber(len)];
         //inserisco il messggio automatico
         this.data.contacts[this.currentContact].messages.push(msgAuto);
 
