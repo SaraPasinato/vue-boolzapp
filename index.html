@@ -85,9 +85,9 @@
             </header>
             <!-- section chat-->
             <section id="chat">
-                <div class="message message-sent">
-                    <p class="fw-normal mb-0"><span class="decription-message">Hai portato a spasso il cane?</span></p>
-                    <p class="time-stamp  fw-light figure-caption text-end"> <span class="time">10/10/2020 10:00AM</span></p>
+                <div class="message " v-for="(message in data.contacts[currentContact].messages" :class="(message.status=='received') ? 'message-received':'message-sent'">
+                    <p class="fw-normal mb-0"><span class="decription-message">{{message.message}}</span></p>
+                    <p class="time-stamp  fw-light figure-caption text-end"> <span class="time">{{message.date}}</span></p>
                 </div>
           
             </section>
