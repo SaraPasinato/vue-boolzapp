@@ -17,5 +17,12 @@ var app = new Vue({
     el: '#app',
     data: {
       data,
+      currentContact:0,
+    },
+    methods:{
+      setCurrentContact(position){
+        this.currentContact=position;
+        return this.currentContact;
+      }
     }
   })

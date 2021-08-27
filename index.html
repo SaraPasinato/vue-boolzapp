@@ -68,10 +68,12 @@
             <header id="contact-header">
                 <!-- contact photo + contact name-->
                 <div class="col-9 contact-info p-2">
-                    <img class="img-fluid img-avatar ms-2" src="./assets/img/avatar_1.jpg" alt="Avatar Utente">  
+                    <!-- TODO: controllo sul numero degli utenti -->
+                    <img class="img-fluid img-avatar ms-2" :src="`./assets/img/avatar${data.contacts[currentContact].avatar}.jpg`" :alt="data.contacts[currentContact].name">  
                      <div class="info-items ms-2 mt-4">
-                         <p><span class="lead fw-normal ">Michele</span></p>
-                         <p class="fw-light figure-caption">Ultimo accesso oggi alle <span class="time">10:00</span></p>
+                         <p><span class="lead fw-normal ">{{data.contacts[currentContact].name}}</span></p>
+                    <!-- TODO: metodo per stampare la data l'ultimo messaggio ricevuto dal contatto-->
+                         <p class="fw-light figure-caption">Ultimo accesso oggi alle <span class="time">{{data.contacts[currentContact].messages[data.contacts[currentContact].messages.length -1].date}}</span></p>
                      </div>
                 </div>
                 <!-- user links -->
