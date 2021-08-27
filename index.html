@@ -54,11 +54,11 @@
             <section id="user-search">
                 <a href=""><i class="text-secondary fas fa-search fa-lg"></i></a>
                 <input type="text" class="fw-lighter form-control w-75" placeholder="Cerca o inizia una nuova chat"
-                    id="filterChat">
+                 v-model="search" @kedown.enter="filterByNameContact()">
             </section>
             <!-- section  contacts  -->
             <section id="user-contacts">
-                <div class="contact d-flex " v-for="(contact,pos) in data.contacts" @click="setCurrentContact(pos)"
+                <div class="contact d-flex " v-for="(contact,pos) in filterByNameContact" @click="setCurrentContact(pos)"
                     :class="(pos === currentContact ? 'active' : '')">
                     <img class="img-avatar align-self-center mx-3" :src="`assets/img/avatar${contact.avatar}.jpg`"
                         :alt="contact.name">

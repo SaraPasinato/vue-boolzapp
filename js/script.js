@@ -22,9 +22,11 @@ var app = new Vue({
     currentContact: 0,
     //tiene traccia del testo in input
     currentText: "",
-
     //secondi di risposta
     seconds: 1000,
+    //input search 
+    //? devo inserire vuoto ('')
+    search:'',
   },
   methods: {
     //metodo per settare poi il contatto al click sul profilo (user-contact)
@@ -67,7 +69,19 @@ var app = new Vue({
 
       }, this.seconds);
     },
-
    
+  },
+  //? methods vs. computed
+  // computed: serve a modificare la vista di dati già esistenti.
+  // methods: modificare direttamente i dati
+  // cit. vus.js doc site /computed-properties
+  computed:{
+      //filtro per nome dei contatti
+      filterByNameContact(){
+        return this.data.contacts.filter((contact)=>{
+          return contact.name.toLowerCase().includes(this.search.toLowerCase());
+        }
+        );
+      }
   }
 })
