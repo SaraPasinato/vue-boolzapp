@@ -84,6 +84,7 @@ var app = new Vue({
       }, this.seconds);
 
     },
+    //crea un costruttore di un messaggio e lo inserisce in coda 
     addMessage(text, status) {
       const msg = {
         date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
