@@ -33,46 +33,48 @@ var app = new Vue({
     setCurrentContact(position) {
       this.currentContact = position;
     },
+    /////TODO:filterLastReceivedMessage
+    getLastSeen() {
+      const msg = this.data.contacts[this.currentContact].messages;
+      const receivedMsg = msg.filter((message) => message.status === 'received');
+      const lastMessages = receivedMsg[receivedMsg.length - 1];
 
+      return lastMessages.date;
+    },
     getRandomNumber(max) {
       return Math.floor(Math.random() * (max));
     },
     //crea un nuovo messaggio
     newMessage() {
-     
-      //TODO:controllo stringa vuota 
-     
-         //creo un oggetto messaggio
-        const msg = {
-          date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
-          message: this.currentText,
-          status: 'sent',
-        };
-        //inserisco il messaggio in coda ai messaggi del current contact
-        this.data.contacts[this.currentContact].messages.push(msg);
-        //pulisco il currentText
-        this.currentText = '';
 
-        setTimeout(() => {
-          //creo array di risoposte
-          const strResponses = ['Ciao👋🏻', 'Ok,arrivo subito', 'Yep', 'Lol🤣', 'Scusa,👀 ..ora non posso', 'sono in riunione', 'Nope'];
-          const len = strResponses.length - 1;
-          //creo un messaggio di risposta
-          let msgAuto = {
-            date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
-            message: '',
-            status: 'received',
-          };
+      /////TODO:controllo stringa vuota 
+      //? modificatori: v-model.trim() 
+      if (!this.currentText) return;
+      //creo un oggetto messaggio
+      this.addMessage(this.currentText, 'sent');
 
-          // setto messaggio casuale
-          msgAuto.message = strResponses[this.getRandomNumber(len)];
-          //inserisco il messggio automatico
-          this.data.contacts[this.currentContact].messages.push(msgAuto);
+      //pulisco il currentText
+      this.currentText = '';
 
-        }, this.seconds);
+      setTimeout(() => {
+        //creo array di risoposte
+        const strResponses = ['Ciao👋🏻', 'Ok,arrivo subito', 'Yep', 'Lol🤣', 'Scusa,👀 ..ora non posso', 'sono in riunione', 'Nope'];
+        const len = strResponses.length - 1;
+        //creo un messaggio di risposta
+        this.addMessage(strResponses[this.getRandomNumber(len)], 'received');
+
+      }, this.seconds);
 
     },
+    addMessage(text, status) {
+      const msg = {
+        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+        status,
+        message: text,
+      }
 
+      this.data.contacts[this.currentContact].messages.push(msg);
+    }
   },
   //! methods vs. computed
   // computed: serve a modificare la vista di dati già esistenti.
@@ -82,7 +84,9 @@ var app = new Vue({
     //filtro per nome dei contatti
     filterByNameContact() {
       return this.data.contacts.filter((contact) => {
-        return contact.name.toLowerCase().includes(this.search.toLowerCase());
+        console.log(contact.visible);
+       
+        return (contact.name.toLowerCase().includes(this.search.toLowerCase())&& contact.visible);
       }
       );
     }

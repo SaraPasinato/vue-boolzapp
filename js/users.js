@@ -72,7 +72,7 @@ const data = {
     },
     {
       name: 'Luisa',
-      avatar: '_6',
+      avatar: '_4',
       visible: true,
       messages: [
         {

@@ -78,8 +78,7 @@
                     <div class="info-items ms-2 mt-4">
                         <p><span class="lead fw-normal ">{{data.contacts[currentContact].name}}</span></p>
                         <p class="fw-light figure-caption">Ultimo accesso: <span
-                                class="time">{{data.contacts[currentContact].messages[data.contacts[currentContact].messages.length
-                                -1].date}}</span></p>
+                                class="time">{{getLastSeen()}}</span></p>
                     </div>
                 </div>
                 <!-- user links -->
@@ -103,7 +102,7 @@
             <footer id="msg-control">
                 <a href=""><i class="far fa-smile fa-lg"></i></a>
                 <input type="text" class="fw-light form-control w-75" placeholder="Scrivi un messaggio"
-                    v-model="currentText" @keydown.enter="newMessage()">
+                    v-model.trim="currentText" @keyup.enter="newMessage()">
                 <a href=""><i class="fas fa-microphone fa-lg"></i></a>
             </footer>
         </section>
