@@ -38,6 +38,7 @@ var app = new Vue({
     //? devo inserire vuoto ('')
     search: '',
     indexMessage: -1,
+    lastDate:'',
   },
   methods: {
     //metodo per settare poi il contatto al click sul profilo (user-contact)
@@ -55,9 +56,14 @@ var app = new Vue({
     getLastSeen(pos) {
       const msg = this.data.contacts[pos].messages;
       const receivedMsg = msg.filter((message) => message.status === 'received');
-      const lastMessages =( receivedMsg.length>1 ) ?  receivedMsg[receivedMsg.length - 1] : receivedMsg[0] ;
-
-      return lastMessages.date;
+      let lastMessages = (receivedMsg.length > 1) ? receivedMsg[receivedMsg.length - 1]: receivedMsg[0] ;
+      console.log(lastMessages);
+      if(typeof(lastMessages) =='undefined'){
+        return this.lastDate;
+      }else{
+        return lastMessages.date;
+      }
+      
     },
     getRandomNumber(max) {
       return Math.floor(Math.random() * (max));
@@ -97,6 +103,7 @@ var app = new Vue({
 
     //metodo che elimina il messaggio in posizione indexMessage di currentContact
     deleteMessage(){
+      this.lastDate=this.getLastSeen(this.indexMessage);
       this.data.contacts[this.currentContact].messages.splice(this.indexMessage,1);
       this.indexMessage=0;
     },

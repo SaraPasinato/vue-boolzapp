@@ -64,10 +64,10 @@
                         :alt="contact.name">
                     <div class="info-items ms-2 mt-1">
                         <p class="lead fs-3">{{contact.name}}</p>
-                        <p class="fw-light figure-caption">Ultimo accesso: <span
-                                class="time" v-if="contact.messages.length>0">{{getLastSeen(pos)}}</span>
-                     <!-- TODO: inserire ultima data ricevuta in una varibile e mostrarla in caso di pulizia totale -->
-                            </p>
+                        <p class="fw-light figure-caption">Ultimo accesso: <span class="time"
+                                v-if="contact.messages.length>0 ">{{getLastSeen(pos)}}</span>
+                            <!-- TODO: inserire ultima data ricevuta in una varibile e mostrarla in caso di pulizia totale -->
+                        </p>
                     </div>
 
                 </div>
@@ -84,8 +84,8 @@
                         :alt="data.contacts[currentContact].name">
                     <div class="info-items ms-2 mt-4">
                         <p><span class="lead fw-normal ">{{data.contacts[currentContact].name}}</span></p>
-                        <p class="fw-light figure-caption">Ultimo accesso: <span
-                                class="time" v-if="data.contacts[currentContact].messages.length > 0">{{getLastSeen(currentContact)}}</span>
+                        <p class="fw-light figure-caption">Ultimo accesso: <span class="time"
+                                v-if="data.contacts[currentContact].messages.length > 0">{{getLastSeen(currentContact)}}</span>
                         </p>
                     </div>
                 </div>
@@ -99,14 +99,16 @@
             <!-- section chat-->
             <section id="chat">
                 <div class="message " v-for="(message,index) in data.contacts[currentContact].messages"
-                    :class="(message.status=='received') ? 'message-received':'message-sent'" @click="setCurrentMessage(index)">
-                    <div class="dropdown" :class="(indexMessage == index) ? 'dropdown-active': null " @click="deleteMessage()">
-                        <span >Delete message</span>
+                    :class="(message.status=='received') ? 'message-received':'message-sent'"
+                    @click="setCurrentMessage(index)">
+                    <div class="dropdown" :class="(indexMessage == index) ? 'dropdown-active': null "
+                        @click="deleteMessage()">
+                        <span>Delete message</span>
                     </div>
                     <p class="fw-normal mb-0"><span class="decription-message">{{message.message}}</span></p>
                     <p class="time-stamp  fw-light figure-caption text-end"> <span class="time">{{message.date}}</span>
                     </p>
-                   
+
                 </div>
 
             </section>
