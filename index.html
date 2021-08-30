@@ -54,15 +54,20 @@
             <section id="user-search">
                 <a href=""><i class="text-secondary fas fa-search fa-lg"></i></a>
                 <input type="text" class="fw-lighter form-control w-75" placeholder="Cerca o inizia una nuova chat"
-                 v-model="search" @kedown.enter="filterByNameContact()">
+                    v-model="search" @kedown.enter="filterByNameContact()">
             </section>
             <!-- section  contacts  -->
             <section id="user-contacts">
-                <div class="contact d-flex " v-for="(contact,pos) in filterByNameContact" @click="setCurrentContact(pos)"
-                    :class="(pos === currentContact ? 'active' : '')">
+                <div class="contact d-flex " v-for="(contact,pos) in filterByNameContact"
+                    @click="setCurrentContact(pos)" :class="(pos === currentContact ? 'active' : '')">
                     <img class="img-avatar align-self-center mx-3" :src="`assets/img/avatar${contact.avatar}.jpg`"
                         :alt="contact.name">
-                    <span class="lead fs-3">{{contact.name}}</span>
+                    <div class="info-items ms-2 mt-1">
+                        <p class="lead fs-3">{{contact.name}}</p>
+                        <p class="fw-light figure-caption">Ultimo accesso: <span class="time">{{getLastSeen(pos)}}</span>
+                        </p>
+                    </div>
+
                 </div>
             </section>
         </section>
@@ -77,8 +82,8 @@
                         :alt="data.contacts[currentContact].name">
                     <div class="info-items ms-2 mt-4">
                         <p><span class="lead fw-normal ">{{data.contacts[currentContact].name}}</span></p>
-                        <p class="fw-light figure-caption">Ultimo accesso: <span
-                                class="time">{{getLastSeen()}}</span></p>
+                        <p class="fw-light figure-caption">Ultimo accesso: <span class="time">{{getLastSeen(currentContact)}}</span>
+                        </p>
                     </div>
                 </div>
                 <!-- user links -->

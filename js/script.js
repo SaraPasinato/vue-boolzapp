@@ -15,8 +15,8 @@
 //!Milestone 5( BONUS OPZIONALE)
 //Cancella messaggio: cliccando sul messaggio appare un menu a tendina 
 //  che permette di cancellare il messaggio selezionato.
-//Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista
-//   dei contatti
+//*Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista
+//*   dei contatti
 
 
 
@@ -43,9 +43,9 @@ var app = new Vue({
     setCurrentContact(position) {
       this.currentContact = position;
     },
-    //filter Last Received Message
-    getLastSeen() {
-      const msg = this.data.contacts[this.currentContact].messages;
+    //filter Last Received Message by pos
+    getLastSeen(pos) {
+      const msg = this.data.contacts[pos].messages;
       const receivedMsg = msg.filter((message) => message.status === 'received');
       const lastMessages = receivedMsg[receivedMsg.length - 1];
 
