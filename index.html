@@ -99,7 +99,7 @@
             <section id="chat">
                 <div class="message " v-for="(message,index) in data.contacts[currentContact].messages"
                     :class="(message.status=='received') ? 'message-received':'message-sent'"
-                    @click="setCurrentMessage(index)" @dblclick="removeIndexMessage()">
+                    @dblclick="setCurrentMessage(index)" @click="removeIndexMessage()">
                     <div class="dropdown" :class="(indexMessage === index ) ? 'dropdown-active': null "
                         @click="deleteMessage()">
                         <span>Delete message</span>
