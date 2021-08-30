@@ -41,8 +41,8 @@ var app = new Vue({
     //crea un nuovo messaggio
     newMessage() {
      
-      /////TODO:controllo stringa vuota 
-      if (!isNaN(this.currentText) && this.currentText.trim()!= '') {
+      //TODO:controllo stringa vuota 
+     
          //creo un oggetto messaggio
         const msg = {
           date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
@@ -72,10 +72,6 @@ var app = new Vue({
 
         }, this.seconds);
 
-      } else {
-        //altrimenti scrivo in console e non inserisco niente
-        console.log('hai inserito uno spazio');
-      }
     },
 
   },
