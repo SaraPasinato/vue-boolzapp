@@ -7,7 +7,7 @@
 //* Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra,
 //*   come messaggio verde
 //* Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo
-console.log("HERE", Vue);
+
 
 
 Vue.config.devtools = true;
@@ -33,7 +33,7 @@ var app = new Vue({
     setCurrentContact(position) {
       this.currentContact = position;
     },
-    /////TODO:filterLastReceivedMessage
+    //filter Last Received Message
     getLastSeen() {
       const msg = this.data.contacts[this.currentContact].messages;
       const receivedMsg = msg.filter((message) => message.status === 'received');
@@ -47,7 +47,7 @@ var app = new Vue({
     //crea un nuovo messaggio
     newMessage() {
 
-      /////TODO:controllo stringa vuota 
+      //controllo stringa vuota 
       //? modificatori: v-model.trim() 
       if (!this.currentText) return;
       //creo un oggetto messaggio
@@ -81,7 +81,7 @@ var app = new Vue({
   // methods: modificare direttamente i dati
   // cit. vus.js doc site /computed-properties
   computed: {
-    //filtro per nome dei contatti
+    //filtro per nome dei contatti e visibilità 
     filterByNameContact() {
       return this.data.contacts.filter((contact) => {
         console.log(contact.visible);
