@@ -176,6 +176,31 @@ body{
     background-color: #D5F9BA;
 }
 
+#chat .message.message-received::before{
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-left: 20px solid transparent;
+    border-right:0px solid #fff;
+    border-top: 17px solid #fff;
+    border-bottom: 0px solid transparent;
+    position: relative;
+    left: -30px;
+    top: 0px;
+}
+
+#chat .message.message-sent::before{
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-left: 0px solid #D5F9BA;
+    border-right:20px solid transparent;
+    border-top: 17px solid #D5F9BA;
+    border-bottom: 0px solid transparent;
+    position: relative;
+    left: 280px;
+    top: 0px;
+}
 .message-received {
     align-self: flex-start;
     background-color: #fff;
