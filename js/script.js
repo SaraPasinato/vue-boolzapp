@@ -37,7 +37,7 @@ var app = new Vue({
     //input search 
     //? devo inserire vuoto ('')
     search: '',
-    indexMessage: -1,
+    indexMessage: null,
     lastDate:'',
   },
   methods: {
@@ -47,17 +47,19 @@ var app = new Vue({
     },
     //metodo per settare il messaggio corrente al click
     setCurrentMessage(p){
-  
       this.indexMessage=p;
-      console.log(this.indexMessage=p);
-
+      
+    },
+    //metodo per rimuovere l'indice corrente al evento mouseover
+    removeIndexMessage(){
+     return this.indexMessage=null;
+      
     },
     //filter Last Received Message by pos
     getLastSeen(pos) {
       const msg = this.data.contacts[pos].messages;
       const receivedMsg = msg.filter((message) => message.status === 'received');
       let lastMessages = (receivedMsg.length > 1) ? receivedMsg[receivedMsg.length - 1]: receivedMsg[0] ;
-      console.log(lastMessages);
       if(typeof(lastMessages) =='undefined'){
         return this.lastDate;
       }else{
@@ -105,7 +107,7 @@ var app = new Vue({
     deleteMessage(){
       this.lastDate=this.getLastSeen(this.indexMessage);
       this.data.contacts[this.currentContact].messages.splice(this.indexMessage,1);
-      this.indexMessage=0;
+      console.log("prima ",this.indexMessage);
     },
   },
   //! methods vs. computed

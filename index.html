@@ -66,7 +66,6 @@
                         <p class="lead fs-3">{{contact.name}}</p>
                         <p class="fw-light figure-caption">Ultimo accesso: <span class="time"
                                 v-if="contact.messages.length>0 ">{{getLastSeen(pos)}}</span>
-                            <!-- TODO: inserire ultima data ricevuta in una varibile e mostrarla in caso di pulizia totale -->
                         </p>
                     </div>
 
@@ -100,8 +99,8 @@
             <section id="chat">
                 <div class="message " v-for="(message,index) in data.contacts[currentContact].messages"
                     :class="(message.status=='received') ? 'message-received':'message-sent'"
-                    @click="setCurrentMessage(index)">
-                    <div class="dropdown" :class="(indexMessage == index) ? 'dropdown-active': null "
+                    @click="setCurrentMessage(index)" @dblclick="removeIndexMessage()">
+                    <div class="dropdown" :class="(indexMessage === index ) ? 'dropdown-active': null "
                         @click="deleteMessage()">
                         <span>Delete message</span>
                     </div>
