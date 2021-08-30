@@ -140,6 +140,25 @@ body{
     margin-bottom: 0px;
 }
 
+#chat .message .dropdown{
+    display: none;
+    position: relative;
+   
+    width: 150px;
+    left: 80%;
+    top: -25px;
+    transform: translateX(-50%);
+    padding: 10px;
+    /*background-color: #fff;*/
+    box-shadow: 3px 3px 5px #aaaaaa;
+}
+
+
+#chat .message .dropdown.dropdown-active {
+    display: block;
+    z-index: 1;
+}
+
 /*? section msg control*/
 #msg-control{
     width: 100%;
@@ -208,4 +227,11 @@ body{
 
 .active{
     background-color: #dcf8c6;
+}
+
+.message-received .dropdown{
+    background-color: #D5F9BA;
+}
+.message-sent .dropdown{
+    background-color: #fff;
 }

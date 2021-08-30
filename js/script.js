@@ -37,11 +37,19 @@ var app = new Vue({
     //input search 
     //? devo inserire vuoto ('')
     search: '',
+    indexMessage: -1,
   },
   methods: {
     //metodo per settare poi il contatto al click sul profilo (user-contact)
     setCurrentContact(position) {
       this.currentContact = position;
+    },
+    //metodo per settare il messaggio corrente al click
+    setCurrentMessage(p){
+  
+      this.indexMessage=p;
+      console.log(this.indexMessage=p);
+
     },
     //filter Last Received Message by pos
     getLastSeen(pos) {
@@ -84,7 +92,12 @@ var app = new Vue({
       }
 
       this.data.contacts[this.currentContact].messages.push(msg);
-    }
+    },
+
+    //metodo che elimina il messaggio in posizione indexMessage di currentContact
+    deleteMessage(){
+      this.data.contacts[this.currentContact].messages.splice(this.indexMessage,1);
+    },
   },
   //! methods vs. computed
   // computed: serve a modificare la vista di dati già esistenti.
