@@ -65,8 +65,9 @@
                     <div class="info-items ms-2 mt-1">
                         <p class="lead fs-3">{{contact.name}}</p>
                         <p class="fw-light figure-caption">Ultimo accesso: <span
-                                class="time">{{getLastSeen(pos)}}</span>
-                        </p>
+                                class="time" v-if="contact.messages.length>0">{{getLastSeen(pos)}}</span>
+                     <!-- TODO: inserire ultima data ricevuta in una varibile e mostrarla in caso di pulizia totale -->
+                            </p>
                     </div>
 
                 </div>
@@ -84,7 +85,7 @@
                     <div class="info-items ms-2 mt-4">
                         <p><span class="lead fw-normal ">{{data.contacts[currentContact].name}}</span></p>
                         <p class="fw-light figure-caption">Ultimo accesso: <span
-                                class="time">{{getLastSeen(currentContact)}}</span>
+                                class="time" v-if="data.contacts[currentContact].messages.length > 0">{{getLastSeen(currentContact)}}</span>
                         </p>
                     </div>
                 </div>

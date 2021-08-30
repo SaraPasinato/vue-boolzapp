@@ -55,7 +55,7 @@ var app = new Vue({
     getLastSeen(pos) {
       const msg = this.data.contacts[pos].messages;
       const receivedMsg = msg.filter((message) => message.status === 'received');
-      const lastMessages = receivedMsg[receivedMsg.length - 1];
+      const lastMessages =( receivedMsg.length>1 ) ?  receivedMsg[receivedMsg.length - 1] : receivedMsg[0] ;
 
       return lastMessages.date;
     },
@@ -98,6 +98,7 @@ var app = new Vue({
     //metodo che elimina il messaggio in posizione indexMessage di currentContact
     deleteMessage(){
       this.data.contacts[this.currentContact].messages.splice(this.indexMessage,1);
+      this.indexMessage=0;
     },
   },
   //! methods vs. computed
