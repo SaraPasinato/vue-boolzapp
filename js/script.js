@@ -17,8 +17,11 @@
 //*  che permette di cancellare il messaggio selezionato.
 //*Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista
 //*   dei contatti
-
-
+//!EXTRA 
+//?Doppio click: deseleziona il messaggio
+//?Grafica chat a fumetto (css)
+//?Grafica tendina differente per tipo messaggio
+//?Scroll verso il basso per ogni messaggio in chat
 
 Vue.config.devtools = true;
 
