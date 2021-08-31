@@ -44,7 +44,6 @@ var app = new Vue({
     //metodo per settare poi il contatto al click sul profilo (user-contact)
     setCurrentContact(position) {
       this.currentContact = position;
-      this.removeIndexMessage();
     },
     //metodo per settare il messaggio corrente al click
     setCurrentMessage(p) {
@@ -52,7 +51,7 @@ var app = new Vue({
     },
     //metodo per rimuovere l'indice corrente al evento mouseover
     removeIndexMessage() {
-     this.indexMessage = null;
+      this.indexMessage = null;
 
     },
     //filter Last Received Message by pos
@@ -76,7 +75,7 @@ var app = new Vue({
       //controllo stringa vuota 
       //? modificatori: v-model.trim() 
       if (!this.currentText) return;
-     
+
       //creo un oggetto messaggio
       this.addMessage(this.currentText, 'sent');
 
@@ -88,14 +87,14 @@ var app = new Vue({
         const len = strResponses.length - 1;
         //creo un messaggio di risposta
         this.lastDate = this.getLastSeen(this.currentContact);
-       
+
 
         this.addMessage(strResponses[this.getRandomNumber(len)], 'received');
-        
+
 
       }, this.seconds);
 
-      
+
 
     },
     //crea un costruttore di un messaggio e lo inserisce in coda 
@@ -105,26 +104,21 @@ var app = new Vue({
         status,
         message: text,
       }
-            //!così setta index Message a null
 
-      this.removeIndexMessage();
       this.data.contacts[this.currentContact].messages.push(msg);
-     
+
       //scrolla in fondo
       this.scrollToBottom();
     },
 
     //metodo che elimina il messaggio in posizione indexMessage di currentContact
     deleteMessage() {
-      //!così setta index Message a null
-      
       this.data.contacts[this.currentContact].messages.splice(this.indexMessage, 1);
-      
     },
-     //metodo per scollare la section #chat
-     scrollToBottom(){
-      const section= this.$el.querySelector('#chat');
-      section.scrollTop=section.scrollHeight;
+    //metodo per scollare la section #chat
+    scrollToBottom() {
+      const section = this.$el.querySelector('#chat');
+      section.scrollTop = section.scrollHeight;
     },
   },
   // computed: serve a modificare la vista di dati già esistenti.
