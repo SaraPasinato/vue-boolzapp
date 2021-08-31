@@ -13,8 +13,8 @@
 //*   lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono
 //*    solo Marco e Martina)
 //!Milestone 5( BONUS OPZIONALE)
-//Cancella messaggio: cliccando sul messaggio appare un menu a tendina 
-//  che permette di cancellare il messaggio selezionato.
+//*Cancella messaggio: cliccando sul messaggio appare un menu a tendina 
+//*  che permette di cancellare il messaggio selezionato.
 //*Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista
 //*   dei contatti
 
@@ -38,34 +38,34 @@ var app = new Vue({
     //? devo inserire vuoto ('')
     search: '',
     indexMessage: null,
-    lastDate:'',
+    lastDate: null,
   },
   methods: {
     //metodo per settare poi il contatto al click sul profilo (user-contact)
     setCurrentContact(position) {
       this.currentContact = position;
+      this.removeIndexMessage();
     },
     //metodo per settare il messaggio corrente al click
-    setCurrentMessage(p){
-      this.indexMessage=p;
-      
+    setCurrentMessage(p) {
+      this.indexMessage = p;
     },
     //metodo per rimuovere l'indice corrente al evento mouseover
-    removeIndexMessage(){
-     return this.indexMessage=null;
-      
+    removeIndexMessage() {
+     this.indexMessage = null;
+
     },
     //filter Last Received Message by pos
     getLastSeen(pos) {
       const msg = this.data.contacts[pos].messages;
       const receivedMsg = msg.filter((message) => message.status === 'received');
-      let lastMessages = (receivedMsg.length > 1) ? receivedMsg[receivedMsg.length - 1]: receivedMsg[0] ;
-      if(typeof(lastMessages) =='undefined'){
+      let lastMessages = (receivedMsg.length > 1) ? receivedMsg[receivedMsg.length - 1] : receivedMsg[0];
+      if (typeof (lastMessages) == 'undefined') {
         return this.lastDate;
-      }else{
+      } else {
         return lastMessages.date;
       }
-      
+
     },
     getRandomNumber(max) {
       return Math.floor(Math.random() * (max));
@@ -76,20 +76,26 @@ var app = new Vue({
       //controllo stringa vuota 
       //? modificatori: v-model.trim() 
       if (!this.currentText) return;
+     
       //creo un oggetto messaggio
       this.addMessage(this.currentText, 'sent');
 
       //pulisco il currentText
       this.currentText = '';
-
       setTimeout(() => {
         //creo array di risoposte
         const strResponses = ['Ciao👋🏻', 'Ok,arrivo subito', 'Yep', 'Lol🤣', 'Scusa,👀 ..ora non posso', 'sono in riunione', 'Nope'];
         const len = strResponses.length - 1;
         //creo un messaggio di risposta
+        this.lastDate = this.getLastSeen(this.currentContact);
+       
+
         this.addMessage(strResponses[this.getRandomNumber(len)], 'received');
+        
 
       }, this.seconds);
+
+      
 
     },
     //crea un costruttore di un messaggio e lo inserisce in coda 
@@ -99,30 +105,36 @@ var app = new Vue({
         status,
         message: text,
       }
+            //!così setta index Message a null
 
+      this.removeIndexMessage();
       this.data.contacts[this.currentContact].messages.push(msg);
+     
+      //scrolla in fondo
+      this.scrollToBottom();
     },
 
     //metodo che elimina il messaggio in posizione indexMessage di currentContact
-    deleteMessage(){
-      this.lastDate=this.getLastSeen(this.indexMessage);
-      this.data.contacts[this.currentContact].messages.splice(this.indexMessage,1);
-      console.log("prima ",this.indexMessage);
+    deleteMessage() {
+      //!così setta index Message a null
+      
+      this.data.contacts[this.currentContact].messages.splice(this.indexMessage, 1);
+      
+    },
+     //metodo per scollare la section #chat
+     scrollToBottom(){
+      const section= this.$el.querySelector('#chat');
+      section.scrollTop=section.scrollHeight;
     },
   },
-  //! methods vs. computed
   // computed: serve a modificare la vista di dati già esistenti.
-  // methods: modificare direttamente i dati
-  // cit. vus.js doc site /computed-properties
   computed: {
     //filtro per nome dei contatti e visibilità 
     filterByNameContact() {
       return this.data.contacts.filter((contact) => {
-        console.log(contact.visible);
-       
-        return (contact.name.toLowerCase().includes(this.search.toLowerCase())&& contact.visible);
+        return (contact.name.toLowerCase().includes(this.search.toLowerCase()) && contact.visible);
       }
       );
     }
-  }
+  },
 })
